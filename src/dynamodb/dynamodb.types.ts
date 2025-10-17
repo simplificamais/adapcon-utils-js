@@ -29,3 +29,9 @@ export type ScanResponse<T> = {
   items: T[],
   lastKey?: Record<string, any>,
 }
+
+export type GetDynamoDBClientOptions = {
+  localEndpoint?: string
+  endpoint?: string
+  region?: string
+}
