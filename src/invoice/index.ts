@@ -1,1 +1,4 @@
-export const isValidElectronicKey = (electronicKey: string): boolean => electronicKey.length === 44
+export const isValidElectronicKey = (electronicKey: string): boolean => {
+  if (typeof electronicKey !== 'string') return false
+  return electronicKey.length === 44
+}
