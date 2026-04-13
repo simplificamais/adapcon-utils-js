@@ -17,7 +17,7 @@ export class S3Service {
     tagging,
     contentType,
     contentEncoding,
-    region = 'sa-east-1'
+    region = process.env.AWS_REGION ?? 'sa-east-1'
   }) {
     const client = new S3Client({ region })
 
@@ -37,7 +37,7 @@ export class S3Service {
     return data
   }
 
-  static async getObject ({ bucket, key, region = 'sa-east-1' }) {
+  static async getObject ({ bucket, key, region = process.env.AWS_REGION ?? 'sa-east-1' }) {
     const client = new S3Client({ region })
 
     const command = new GetObjectCommand({
@@ -50,7 +50,7 @@ export class S3Service {
     return data
   }
 
-  static async deleteObject ({ bucket, key, region = 'sa-east-1' }) {
+  static async deleteObject ({ bucket, key, region = process.env.AWS_REGION ?? 'sa-east-1' }) {
     const client = new S3Client({ region })
 
     const command = new DeleteObjectCommand({
@@ -64,7 +64,7 @@ export class S3Service {
   }
 
   static async getSignedUrl ({
-    bucket, key, expiresIn, contentType = '', region = 'sa-east-1', type = 'getObject'
+    bucket, key, expiresIn, contentType = '', region = process.env.AWS_REGION ?? 'sa-east-1', type = 'getObject'
   }) {
     const client = new S3Client({ region })
 

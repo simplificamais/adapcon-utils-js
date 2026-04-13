@@ -9,7 +9,7 @@ export function getDynamoDBClient(options: GetDynamoDBClientOptions = {}) {
       region: 'localhost'
     } : {
       endpoint: options.endpoint || undefined,
-      region: options.region || 'sa-east-1'
+      region: options.region ?? process.env.AWS_REGION ?? 'sa-east-1'
     }),
   });
 

@@ -27,7 +27,7 @@ import { unmarshall } from '@aws-sdk/util-dynamodb'
 
 const getOptions = () => {
   if (process.env.IS_OFFLINE) return { region: 'localhost', endpoint: 'http://localhost:8000' }
-  return { region: 'sa-east-1' }
+  return { region: process.env.AWS_REGION ?? 'sa-east-1' }
 }
 const dynamoInstance = new DynamoDB(getOptions())
 const documentInstance = DynamoDBDocument.from(dynamoInstance, {

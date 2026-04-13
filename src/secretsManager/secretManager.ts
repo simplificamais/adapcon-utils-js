@@ -2,7 +2,7 @@ import { SecretsManager } from '@aws-sdk/client-secrets-manager'
 import { AccessKeyParam } from '.'
 
 export const SecretManager = {
-  getValue: async <T>({ region = 'sa-east-1', secretId }) => {
+  getValue: async <T>({ region = process.env.AWS_REGION ?? 'sa-east-1', secretId }) => {
     const client = new SecretsManager({ region })
 
     // The SDK can also return a promise calling `promise`
@@ -14,7 +14,7 @@ export const SecretManager = {
     return JSON.parse(secret.SecretString) as T
   },
 
-  getStringValue: async ({ region = 'sa-east-1', secretId }: { region?: string, secretId: string }): Promise<string> => {
+  getStringValue: async ({ region = process.env.AWS_REGION ?? 'sa-east-1', secretId }: { region?: string, secretId: string }): Promise<string> => {
     const client = new SecretsManager({ region })
 
     // The SDK can also return a promise calling `promise`

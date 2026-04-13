@@ -23,7 +23,7 @@ const executeInvoke = async <T>({
   accessKeyId,
   secretAccessKey,
   port = '',
-  region = 'sa-east-1',
+  region = process.env.AWS_REGION ?? 'sa-east-1',
   functionName,
   invocationType = InvokeType.RequestResponse,
   headers = {},
