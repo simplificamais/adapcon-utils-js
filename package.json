@@ -8,10 +8,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/adapcon-team/adapcon-utils-js.git"
+    "url": "git+https://github.com/simplificamais/adapcon-utils-js.git"
   },
   "bugs": {
-    "url": "https://github.com/adapcon-team/adapcon-utils-js/issues"
+    "url": "https://github.com/simplificamais/adapcon-utils-js/issues"
   },
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
