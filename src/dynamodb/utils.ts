@@ -5,8 +5,7 @@ import { GetDynamoDBClientOptions } from "./dynamodb.types"
 export function getDynamoDBClient(options: GetDynamoDBClientOptions = {}) {
   const dynamoInstance = new DynamoDBClient({
     ...(process.env.IS_OFFLINE ? {
-      endpoint: options.localEndpoint || 'http://localhost:8000',
-      region: 'localhost'
+      endpoint: options.localEndpoint || 'http://localhost:8000'
     } : {
       endpoint: options.endpoint || undefined,
       region: options.region ?? process.env.AWS_REGION ?? 'sa-east-1'
