@@ -82,10 +82,10 @@ async function scan<T> (params: ScanCommandInput): Promise<ScanOutput<T>> {
 const getAll = async ({ params, list, fields = [] }: { params: DynamodbParams, list: object[], fields?: string[] }) => {
   let idx = 0
 
-  // ? Pack 25 requests at a time (batchGet limit)
+  // ? Pack 100 requests at a time (batchGet limit)
 
   const packs: any = list.reduce((acc, param) => {
-    if (acc[idx] && acc[idx].length >= 25) idx++
+    if (acc[idx] && acc[idx].length >= 100) idx++
 
     if (!acc[idx]) acc[idx] = []
 
