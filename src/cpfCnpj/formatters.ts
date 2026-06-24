@@ -1,12 +1,7 @@
 export const formatCnpj = (cnpj: string): string => {
   if (typeof cnpj !== 'string' || cnpj.length !== 14) return ''
-
-  cnpj = cnpj.replace(/\D/g, '')
-  cnpj = cnpj.replace(/^(\d{2})(\d)/, '$1.$2')
-  cnpj = cnpj.replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3')
-  cnpj = cnpj.replace(/\.(\d{3})(\d)/, '.$1/$2')
-  cnpj = cnpj.replace(/(\d{4})(\d)/, '$1-$2')
-  return cnpj
+  if (!/^[0-9A-Z]{14}$/.test(cnpj)) return ''
+  return `${cnpj.slice(0, 2)}.${cnpj.slice(2, 5)}.${cnpj.slice(5, 8)}/${cnpj.slice(8, 12)}-${cnpj.slice(12, 14)}`
 }
 
 export const formatCpf = (cpf: string): string => {
