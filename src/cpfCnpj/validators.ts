@@ -1,6 +1,7 @@
 import { calcDigitsPositionsCnpj, calcDigitsPositionsCpf } from './utils'
 
 export const isCnpj = (cnpj: string): boolean => {
+  if (!/^[0-9A-Z]{14}$/.test(cnpj)) return false
   // get first 12 numbers from cnpj
   const firstNumbers = cnpj.substr(0, 12)
   // do first calc
