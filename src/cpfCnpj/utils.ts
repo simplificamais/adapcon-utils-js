@@ -1,8 +1,21 @@
+const CHAR_CODE_0 = '0'.charCodeAt(0)
+const CHAR_CODE_9 = '9'.charCodeAt(0)
+const CHAR_CODE_A = 'A'.charCodeAt(0)
+const CHAR_CODE_Z = 'Z'.charCodeAt(0)
+const LETTER_VALUE_OFFSET = CHAR_CODE_A - 10
+
+const charToValue = (c: string): number => {
+  const code = c.charCodeAt(0)
+  if (code >= CHAR_CODE_0 && code <= CHAR_CODE_9) return code - CHAR_CODE_0
+  if (code >= CHAR_CODE_A && code <= CHAR_CODE_Z) return code - LETTER_VALUE_OFFSET
+  return NaN
+}
+
 export const calcDigitsPositionsCnpj = (digits: string, positions = 10, sumDigits = 0): string => {
   digits = String(digits)
 
   for (let i = 0; i < digits.length; i++) {
-    sumDigits += (Number(digits[i]) * positions)
+    sumDigits += (charToValue(digits[i]) * positions)
     positions--
     if (positions < 2) positions = 9
   }
