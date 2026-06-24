@@ -2,12 +2,11 @@ const CHAR_CODE_0 = '0'.charCodeAt(0)
 const CHAR_CODE_9 = '9'.charCodeAt(0)
 const CHAR_CODE_A = 'A'.charCodeAt(0)
 const CHAR_CODE_Z = 'Z'.charCodeAt(0)
-const LETTER_VALUE_OFFSET = CHAR_CODE_A - 10
 
 const charToValue = (c: string): number => {
   const code = c.charCodeAt(0)
   if (code >= CHAR_CODE_0 && code <= CHAR_CODE_9) return code - CHAR_CODE_0
-  if (code >= CHAR_CODE_A && code <= CHAR_CODE_Z) return code - LETTER_VALUE_OFFSET
+  if (code >= CHAR_CODE_A && code <= CHAR_CODE_Z) return code - CHAR_CODE_0
   return NaN
 }
 
